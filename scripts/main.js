@@ -11,6 +11,7 @@ var submit_sample = function(){
 
     // Make the API request
     fetch(apiUrl, {
+      mode: 'no-cors',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
