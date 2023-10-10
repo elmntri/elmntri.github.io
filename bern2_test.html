@@ -4,18 +4,20 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>BERN2</title>
     </head>
-    <body id="page-top">
-        <div id="wrapper">
-            <div id="mywrapper" class="d-flex flex-column">
+    <script src="/scripts/main.js"></script>
+    <body>
+
+        <div>
+            <div>
                 <div id="content">
                     <header>
                         <div>
-                            <a href="/">
+                            <a href="/bern2_test.html">
                                 <span >BERN2</span>
                             </a>
                             <ul class="nav nav-pills float-right">
                                 <li class="nav-item">
-                                    <a href="/" class="nav-link text-white">Demo</a>
+                                    <a href="/bern2_test.html" class="nav-link text-white">Demo</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="https://github.com/dmis-lab/BERN2" class="nav-link text-white">Github</a>
@@ -43,7 +45,7 @@
                                             (Gene, Disease, Chemical, Species, Mutation, Cell Line, Cell Type, DNA, and RNA)
                                         </li>
                                         <li>Plain text or PMID as an input and annotated results in real time</li>
-                                        <li>RESTful API or local installation (<a href="./documentation">documentation</a>)</li>
+                                        <li>RESTful API or local installation (<a href="http://bern2.korea.ac.kr/documentation">documentation</a>)</li>
                                         <li>Pre-processed PubMed annotations (<a href="https://github.com/dmis-lab/BERN2#annotations" target="_blank">annotations</a>)</li>
                                         <li>
                                             We set the API limit of 300 requests per 100 seconds per user. 
@@ -58,7 +60,7 @@
     <label for="input_type_pmid" class="form-check-label mr-5">PubMed ID (PMID)</label>
 </div>
 <div class="form-group">
-    <textarea id="test_textarea" name="test_textarea" maxlength="3000" rows="15" class="form-control" onfocus="onFocusArea();" style="height: 7rem;">
+    <textarea id="test_textarea" name="test_textarea" maxlength="3000" rows="15" class="form-control" onfocus="onFocusArea();" style="height: 7rem; width: 80%;">
 Autophagy maintains tumour growth through circulating arginine. Autophagy captures intracellular components and delivers them to lysosomes, where they are degraded and recycled to sustain metabolism and to enable survival during starvation1-5. Acute, whole-body deletion of the essential autophagy gene Atg7 in adult mice causes a systemic metabolic defect that manifests as starvation intolerance and gradual loss of white adipose tissue, liver glycogen and muscle mass1. Cancer cells also benefit from autophagy.
     </textarea>
 </div>
@@ -70,4 +72,8 @@ Autophagy maintains tumour growth through circulating arginine. Autophagy captur
         </button>
     </div>
 </div>
+<div>
+<div class="demo_result"></div>
+</div>
+
 </body></html>
