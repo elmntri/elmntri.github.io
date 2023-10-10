@@ -1,0 +1,73 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>BERN2</title>
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+            <div id="mywrapper" class="d-flex flex-column">
+                <div id="content">
+                    <header>
+                        <div>
+                            <a href="/">
+                                <span >BERN2</span>
+                            </a>
+                            <ul class="nav nav-pills float-right">
+                                <li class="nav-item">
+                                    <a href="/" class="nav-link text-white">Demo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://github.com/dmis-lab/BERN2" class="nav-link text-white">Github</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="http://arxiv.org/abs/2201.02080" class="nav-link text-white">Paper</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="container-fluid">
+                        <div class="py-3 text-center">
+                            <h1 class="font-weight-bold brand-name">BERN2</h1>
+                            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                                An Advanced Neural Biomedical Named Entity Recognition and Normalization Tool (Sung et al., 2022)
+                                <br>
+                                <a href="https://dmis.korea.ac.kr/">DMIS Lab</a> at Korea University
+                                <br>
+                                <div class="col-xl-7 col-lg-9 col-md-12 mx-auto text-left py-2">
+                                    <h4>Features of BERN2</h4>
+                                    <ul>
+                                        <li>
+                                            Recognition of 9 biomedical entity types along with normalized IDs
+                                            <br>
+                                            (Gene, Disease, Chemical, Species, Mutation, Cell Line, Cell Type, DNA, and RNA)
+                                        </li>
+                                        <li>Plain text or PMID as an input and annotated results in real time</li>
+                                        <li>RESTful API or local installation (<a href="./documentation">documentation</a>)</li>
+                                        <li>Pre-processed PubMed annotations (<a href="https://github.com/dmis-lab/BERN2#annotations" target="_blank">annotations</a>)</li>
+                                        <li>
+                                            We set the API limit of 300 requests per 100 seconds per user. 
+                                            <br>
+                                            For bulk requests, we highly recommend you to use the local installation.
+                                        </li>
+                                    </ul>
+<div>
+    <input type="radio" name="select_input_type" id="input_type_text" class="form-check-input" value="text" checked="">
+    <label for="input_type_text" class="form-check-label mr-5">Plain Text</label>
+    <input type="radio" name="select_input_type" id="input_type_pmid" class="form-check-input" value="pmid">
+    <label for="input_type_pmid" class="form-check-label mr-5">PubMed ID (PMID)</label>
+</div>
+<div class="form-group">
+    <textarea id="test_textarea" name="test_textarea" maxlength="3000" rows="15" class="form-control" onfocus="onFocusArea();" style="height: 7rem;">
+Autophagy maintains tumour growth through circulating arginine. Autophagy captures intracellular components and delivers them to lysosomes, where they are degraded and recycled to sustain metabolism and to enable survival during starvation1-5. Acute, whole-body deletion of the essential autophagy gene Atg7 in adult mice causes a systemic metabolic defect that manifests as starvation intolerance and gradual loss of white adipose tissue, liver glycogen and muscle mass1. Cancer cells also benefit from autophagy.
+    </textarea>
+</div>
+<div class="row">
+    <div class="col-12">
+        <span id="text_count"><span class="">514</span>/3000 characters</span>
+        <button class="submit_btn btn btn-outline btn-primary bern2-btn" type="button" onclick="submit_sample();">
+        Submit
+        </button>
+    </div>
+</div>
+</body></html>
