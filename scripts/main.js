@@ -10,15 +10,6 @@ var submit_sample = function(){
     
     var textarea = document.getElementById("test_textarea");
     var txt = textarea.value;
-    if(txt == ""){
-        if(req_type == "text"){
-            txt = "Autophagy maintains tumour growth through circulating arginine. Autophagy captures intracellular components and delivers them to lysosomes, where they are degraded and recycled to sustain metabolism and to enable survival during starvation1-5. Acute, whole-body deletion of the essential autophagy gene Atg7 in adult mice causes a systemic metabolic defect that manifests as starvation intolerance and gradual loss of white adipose tissue, liver glycogen and muscle mass1. Cancer cells also benefit from autophagy.";
-        }else{
-            txt = "30429607,29446767";
-        }
-        document.getElementById("test_textarea").value = txt;
-    }
-
     var draw_keys = ['disease', 'mutation', 'gene', 'drug', 'species', 'DNA', 'RNA', 'cell_line', 'cell_type'];
 
     if(req_type == "pmid"){
@@ -37,4 +28,28 @@ var submit_sample = function(){
         'sample_text': txt,
         'draw_keys': JSON.stringify(draw_keys),
         'req_type': req_type,
+    });
+
+    const apiUrl = 'http://bern2.korea.ac.kr/plain';
+
+    // Create the JSON payload
+    const payload = {
+      text: txt
+    };
+
+    // Make the API request
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    }).then(response => response.json())
+      .then(data => {
+        console.log('Response:', data);
+        resultDiv.textContent = data.result;
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+
 }
