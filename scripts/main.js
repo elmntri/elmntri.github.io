@@ -19,14 +19,20 @@ var submit_sample = function(){
     }).then(response => response.json())
       .then(data => {
             console.log(data);
-            for (let key in data) {
-                if (data.hasOwnProperty(key)) {
-                    let value = data[key];
-                    console.log(value);
-                }
-            }
             divElement = document.getElementById("demo_result");
-            divElement.textContent = data.result;
+            annotations = data.hasOwnProperty("annotations")
+            divElement.innerHTML = "<div>"
+            for (let key in annotations) {
+                id = key.id
+                is_n = key.is_neural_normalized
+                word = key.mention
+                obj = key.obj
+                prob = key.prob
+                span = key.span
+                divElement.innerHTML += "<div>ID:"+id+" Key:"+obj+" </div>";
+            } 
+            text = data.hasOwnProperty("text")
+            divElement.innerHTML += "<div>"+text+" </div>";
       })
     .catch(error => {
         console.error('Error:', error);
