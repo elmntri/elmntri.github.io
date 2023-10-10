@@ -17,11 +17,17 @@ var submit_sample = function(){
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
-    }).then(response => response.json())
-      .then(data => {
-        console.log('Response:', data);
-        divElement = document.getElementById("demo_result");
-        divElement.textContent = data.result;
+    }).then(response => response.text())
+      .then(text => {
+        try {
+            const data = JSON.parse(text);
+            // Process the parsed JSON data
+            console.log(data);
+            divElement = document.getElementById("demo_result");
+            divElement.textContent = data.result;
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+        }
       })
     .catch(error => {
         console.error('Error:', error);
