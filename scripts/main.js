@@ -8,7 +8,7 @@ var submit_sample = function(){
     const payload = {
       text: txt
     };
-
+    console.log('Payload:', payload);
     // Make the API request
     fetch(apiUrl, {
       mode: 'no-cors',
@@ -20,9 +20,10 @@ var submit_sample = function(){
     }).then(response => response.json())
       .then(data => {
         console.log('Response:', data);
-        resultDiv.textContent = data.result;
-    }).catch(error => {
+        divElement = document.getElementById("demo_result");
+        divElement.textContent = data.result;
+      })
+    .catch(error => {
         console.error('Error:', error);
     });
-
 }
