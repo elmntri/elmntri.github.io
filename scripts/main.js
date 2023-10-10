@@ -21,7 +21,7 @@ var submit_sample = function(){
             console.log(data);
             for (let key in data) {
                 if (data.hasOwnProperty(key)) {
-                    let value = json[key];
+                    let value = data[key];
                     console.log(value);
                 }
             }
