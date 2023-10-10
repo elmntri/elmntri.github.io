@@ -20,6 +20,7 @@ var submit_sample = function(){
     }).then(response => response.text())
       .then(text => {
         try {
+            console.log("Text:"+text);
             const data = JSON.parse(text);
             // Process the parsed JSON data
             console.log(data);
