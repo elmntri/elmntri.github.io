@@ -5,6 +5,16 @@ const generateColor = (index, total) => {
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 };
 
+function showOverlay(element) {
+    const overlay = element.querySelector('.box');
+    overlay.style.opacity = 1;
+}
+
+function hideOverlay(element) {
+    const overlay = element.querySelector('.box');
+    overlay.style.opacity = 0;
+}
+
 var submit_sample = function(){
     var req_type = "text";
     var textarea = document.getElementById("test_textarea");
@@ -43,6 +53,14 @@ var submit_sample = function(){
                 const [id_type, id_value] = id.split(":");
                 if(id_type.startsWith("mesh")){
                     links[id]="https://meshb.nlm.nih.gov/record/ui?ui=" + id_value
+                } else if ( id_type.startsWith("mim")){
+                    links[id]="https://omim.org/entry/" + id_value
+                } else if ( id_type.startsWith("CL")){
+                    links[id]="https://bioregistry.io/" + id_type + id_value
+                } else if ( id_type.startsWith("cellosaurus")){
+                    links[id]="https://www.cellosaurus.org/:" + id_value
+                } else if ( id_type.startsWith("NCBITaxon")){
+                    links[id]="https://bioregistry.io/" + id_type + id_value
                 } else if ( id_type.startsWith("NCBIGene")){
                     links[id]="https://www.ncbi.nlm.nih.gov/gene/" + id_value
                 }
@@ -54,13 +72,18 @@ var submit_sample = function(){
                 } else {
                     catalogys[obj] = 1;
                 }
-                boxes[word] ="<div class='box'><span class='key-name'>Mention</span><span class='key-value'>:" +
+                boxes[word] ="<div class='box' style='position: absolute; z-index:100; opacity:0; background-color:" +
+                    " rgba(0, 0, 0, 0.7); color: rgba(255, 255, 255, 1)'>" +
+                    "<span class='key-name'>Mention</span><span class='key-value'>:" +
                     word + "</span><br><span class='key-name'>Entity type</span><span class='key-value'>:" +
                     obj + "</span><br><span class='key-name'>ID</span><span class='key-value'>:" +
                     "<a href='" + links[id] + "' target='_blank'>" + id + "</a></span></div>"
 
-                const spanHTML = `<span class='keyword' style='background-color:<${obj}-color>'>${word}</span>`;
-                text = text.replace(new RegExp(word, 'g'), `<span class="highlight">${spanHTML}</span>`);
+                const spanHTML = `<div class='container' style='position: relative; display:inline-block'` +
+                    `onmouseover="showOverlay(this)" onmouseout="hideOverlay(this)">` + 
+                    `${boxes[word]}<span class='keyword' style='` +
+                    `background-color:<${obj}-color>'">${word}</span></div>`;
+                text = text.replace(new RegExp(word, 'g'), `${spanHTML}`);
                 prob = key['prob'];
                 span = key['span'];
             } 
